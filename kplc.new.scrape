@@ -1,0 +1,1 @@
+fc curl -s https://kplc.co.ke/category/view/50/power-interruptions\?page\=1 |grep -Eo "(http|https)://[a-zA-Z0-9./?=_%:-]*" | grep 'item/[0-9][0-9][0-9][0-9]/interruptions' | xargs curl -s | pup 'li' |grep 'a href' | grep 'pdf' | sed 's/<a href=//' | sed 's/>//' | xargs wget
